@@ -1,0 +1,10 @@
+{
+  "exclude": [
+    "**/android/build/**",
+    "**/android/**/build/**",
+    "**/android/.gradle/**",
+    "**/android/build/.transforms/**",
+    "**/android/.cxx/**",
+    "**/.cxx/**"
+  ]
+}
