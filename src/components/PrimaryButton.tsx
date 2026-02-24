@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ViewStyle } from 'react-native';
+import { colors, radii, spacing } from '../theme';
 
 interface Props {
   title: string;
@@ -13,7 +14,7 @@ export const PrimaryButton: React.FC<Props> = ({ title, onPress, disabled, style
     style={[styles.button, disabled && styles.disabled, style]}
     onPress={onPress}
     disabled={disabled}
-    activeOpacity={0.7}
+    activeOpacity={0.8}
   >
     <Text style={styles.text}>{title}</Text>
   </TouchableOpacity>
@@ -21,13 +22,13 @@ export const PrimaryButton: React.FC<Props> = ({ title, onPress, disabled, style
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#007aff',
-    paddingVertical: 14,
-    paddingHorizontal: 24,
-    borderRadius: 8,
+    backgroundColor: colors.accent,
+    paddingVertical: spacing.lg,
+    paddingHorizontal: spacing.xxxl,
+    borderRadius: radii.md,
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 8,
+    marginVertical: spacing.sm,
   },
   text: {
     color: '#fff',
@@ -35,6 +36,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   disabled: {
-    backgroundColor: '#99cfff',
+    opacity: 0.5,
   },
 });

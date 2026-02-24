@@ -1,0 +1,81 @@
+{
+  "appName": "YQN Pay",
+  "home": {
+    "title": "YQN Pay",
+    "todaySales": "تحصيلات اليوم",
+    "todayCount": "المعاملات",
+    "recentTransactions": "المعاملات الأخيرة",
+    "viewAll": "عرض الكل",
+    "newPayment": "تحصيل",
+    "noTransactions": "لا توجد معاملات حتى الآن",
+    "settings": "الإعدادات"
+  },
+  "transactions": {
+    "title": "المعاملات",
+    "empty": "لا توجد معاملات"
+  },
+  "detail": {
+    "title": "التفاصيل",
+    "amount": "المبلغ",
+    "status": "الحالة",
+    "method": "الطريقة",
+    "reference": "المرجع",
+    "dateTime": "التاريخ / الوقت",
+    "notFound": "المعاملة غير موجودة",
+    "refund": "استرداد",
+    "refundConfirm": "تأكيد الاسترداد؟",
+    "refundMessage": "سيتم تعليم المعاملة كمستردة.",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد"
+  },
+  "payMethod": {
+    "title": "طريقة التحصيل",
+    "choose": "اختر طريقة التحصيل",
+    "continue": "متابعة",
+    "card": "بطاقة",
+    "wallet": "محفظة",
+    "qr": "رمز QR",
+    "cash": "نقداً"
+  },
+  "payAmount": {
+    "title": "المبلغ المراد تحصيله",
+    "next": "التالي",
+    "errorAmount": "أدخل مبلغاً أكبر من 0"
+  },
+  "payConfirm": {
+    "title": "تأكيد",
+    "amount": "المبلغ",
+    "method": "الطريقة",
+    "confirm": "تأكيد التحصيل",
+    "processing": "جاري المعالجة…"
+  },
+  "payResult": {
+    "title": "الإيصال",
+    "success": "تم قبول الدفع",
+    "failed": "فشل الدفع",
+    "amount": "المبلغ",
+    "status": "الحالة",
+    "method": "الطريقة",
+    "reference": "المرجع",
+    "dateTime": "التاريخ / الوقت",
+    "backHome": "تمّ"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "french": "Français",
+    "arabic": "العربية",
+    "english": "English",
+    "rtlRestart": "يجب إعادة تشغيل التطبيق لتطبيق التنسيق العربي (RTL).",
+    "restart": "إعادة التشغيل",
+    "later": "لاحقاً"
+  },
+  "status": {
+    "success": "مقبوض",
+    "failed": "فاشلة",
+    "refunded": "مستردة"
+  },
+  "common": {
+    "currency": "د.م."
+  }
+}

@@ -1,50 +1,83 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useLanguage, AppLanguage } from '../context/LanguageContext';
+import { colors, spacing, radii, shadow, typography } from '../theme';
+
+const LANGUAGES: { key: AppLanguage; labelKey: string }[] = [
+  { key: 'fr', labelKey: 'settings.french' },
+  { key: 'ar', labelKey: 'settings.arabic' },
+  { key: 'en', labelKey: 'settings.english' },
+];
 
 const SettingsScreen: React.FC = () => {
-  const [lang, setLang] = useState<'fr' | 'ar'>('fr');
+  const { t } = useTranslation();
+  const { language, setLanguage } = useLanguage();
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Langue</Text>
-      <View style={styles.row}>
+      <Text style={styles.sectionTitle}>{t('settings.language')}</Text>
+      {LANGUAGES.map(lang => (
         <TouchableOpacity
-          onPress={() => setLang('fr')}
-          style={[styles.option, lang === 'fr' && styles.selected]}
+          key={lang.key}
+          onPress={() => setLanguage(lang.key)}
+          style={[styles.option, language === lang.key && styles.optionSelected]}
+          activeOpacity={0.7}
         >
-          <Text style={styles.optionText}>Français</Text>
+          <Text
+            style={[
+              styles.optionText,
+              language === lang.key && styles.optionTextSelected,
+            ]}
+          >
+            {t(lang.labelKey)}
+          </Text>
+          {language === lang.key && <Text style={styles.check}>✓</Text>}
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => setLang('ar')}
-          style={[styles.option, lang === 'ar' && styles.selected]}
-        >
-          <Text style={styles.optionText}>العربية</Text>
-        </TouchableOpacity>
-      </View>
-      <Text style={styles.note}>(Sélection seulement, pas de traduction réelle)</Text>
+      ))}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16 },
-  label: { fontSize: 18, fontWeight: '600', marginBottom: 12 },
-  row: { flexDirection: 'row' },
-  option: {
+  container: {
     flex: 1,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: '#bbb',
-    borderRadius: 8,
+    padding: spacing.lg,
+    backgroundColor: colors.background,
+  },
+  sectionTitle: {
+    ...typography.label,
+    marginBottom: spacing.md,
+  },
+  option: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    marginRight: 8,
+    backgroundColor: colors.surface,
+    padding: spacing.lg,
+    borderRadius: radii.md,
+    marginBottom: spacing.sm,
+    borderWidth: 2,
+    borderColor: 'transparent',
+    ...shadow,
   },
-  selected: {
-    borderColor: '#007aff',
-    backgroundColor: '#e6f0ff',
+  optionSelected: {
+    borderColor: colors.accent,
+    backgroundColor: colors.accentLight,
   },
-  optionText: { fontSize: 16 },
-  note: { fontSize: 12, color: '#666', marginTop: 16 },
+  optionText: {
+    ...typography.body,
+    fontWeight: '500',
+  },
+  optionTextSelected: {
+    color: colors.accent,
+    fontWeight: '600',
+  },
+  check: {
+    fontSize: 18,
+    color: colors.accent,
+    fontWeight: '700',
+  },
 });
 
 export default SettingsScreen;

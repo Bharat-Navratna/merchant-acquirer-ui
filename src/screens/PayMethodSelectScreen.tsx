@@ -1,45 +1,40 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { PaymentMethod } from '../models/PaymentMethod';
+import { useTranslation } from 'react-i18next';
+import { PaymentMethod, PAYMENT_METHODS } from '../models/PaymentMethod';
 import { PaymentMethodCard } from '../components/PaymentMethodCard';
+import { PrimaryButton } from '../components/PrimaryButton';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/types';
+import { colors, spacing, typography } from '../theme';
 
 type NavProp = NativeStackNavigationProp<RootStackParamList, 'PayMethodSelect'>;
 
 const PayMethodSelectScreen: React.FC = () => {
   const navigation = useNavigation<NavProp>();
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<PaymentMethod | null>(null);
-
-  const continuePressed = () => {
-    if (selected) {
-      navigation.navigate('PayAmount', { method: selected });
-    }
-  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Choisissez la méthode</Text>
-      <View style={styles.cardsRow}>
-        <PaymentMethodCard
-          method="card"
-          selected={selected === 'card'}
-          onPress={() => setSelected('card')}
-        />
-        <PaymentMethodCard
-          method="wallet"
-          selected={selected === 'wallet'}
-          onPress={() => setSelected('wallet')}
-        />
+      <Text style={styles.title}>{t('payMethod.choose')}</Text>
+      <View style={styles.grid}>
+        {PAYMENT_METHODS.map(m => (
+          <PaymentMethodCard
+            key={m}
+            method={m}
+            selected={selected === m}
+            onPress={() => setSelected(m)}
+          />
+        ))}
       </View>
       <View style={styles.footer}>
-        <Text
-          onPress={continuePressed}
-          style={[styles.continue, !selected && styles.disabled]}
-        >
-          Continuer
-        </Text>
+        <PrimaryButton
+          title={t('payMethod.continue')}
+          onPress={() => selected && navigation.navigate('PayAmount', { method: selected })}
+          disabled={!selected}
+        />
       </View>
     </View>
   );
@@ -48,28 +43,20 @@ const PayMethodSelectScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: spacing.lg,
+    backgroundColor: colors.background,
   },
   title: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 16,
+    ...typography.h2,
+    marginBottom: spacing.lg,
   },
-  cardsRow: {
+  grid: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexWrap: 'wrap',
   },
   footer: {
     marginTop: 'auto',
-    alignItems: 'center',
-  },
-  continue: {
-    fontSize: 18,
-    color: '#007aff',
-    fontWeight: '600',
-  },
-  disabled: {
-    color: '#ccc',
+    paddingTop: spacing.lg,
   },
 });
 

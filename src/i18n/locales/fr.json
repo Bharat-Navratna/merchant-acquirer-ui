@@ -1,0 +1,81 @@
+{
+  "appName": "YQN Pay",
+  "home": {
+    "title": "YQN Pay",
+    "todaySales": "Encaissements du jour",
+    "todayCount": "Transactions",
+    "recentTransactions": "Transactions récentes",
+    "viewAll": "Tout voir",
+    "newPayment": "Encaisser",
+    "noTransactions": "Aucune transaction pour le moment",
+    "settings": "Paramètres"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "empty": "Aucune transaction"
+  },
+  "detail": {
+    "title": "Détails",
+    "amount": "Montant",
+    "status": "Statut",
+    "method": "Méthode",
+    "reference": "Référence",
+    "dateTime": "Date / heure",
+    "notFound": "Transaction introuvable",
+    "refund": "Rembourser",
+    "refundConfirm": "Confirmer le remboursement ?",
+    "refundMessage": "Cette action marquera la transaction comme remboursée.",
+    "cancel": "Annuler",
+    "confirm": "Confirmer"
+  },
+  "payMethod": {
+    "title": "Méthode d'encaissement",
+    "choose": "Choisissez la méthode",
+    "continue": "Continuer",
+    "card": "Carte",
+    "wallet": "Wallet",
+    "qr": "QR Code",
+    "cash": "Espèces"
+  },
+  "payAmount": {
+    "title": "Montant à encaisser",
+    "next": "Suivant",
+    "errorAmount": "Entrez un montant supérieur à 0"
+  },
+  "payConfirm": {
+    "title": "Confirmer",
+    "amount": "Montant",
+    "method": "Méthode",
+    "confirm": "Confirmer l'encaissement",
+    "processing": "Traitement en cours…"
+  },
+  "payResult": {
+    "title": "Reçu",
+    "success": "Paiement accepté",
+    "failed": "Paiement échoué",
+    "amount": "Montant",
+    "status": "Statut",
+    "method": "Méthode",
+    "reference": "Réf",
+    "dateTime": "Date / heure",
+    "backHome": "Terminé"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "french": "Français",
+    "arabic": "العربية",
+    "english": "English",
+    "rtlRestart": "L'application doit redémarrer pour appliquer la mise en page arabe (RTL).",
+    "restart": "Redémarrer",
+    "later": "Plus tard"
+  },
+  "status": {
+    "success": "Capturé",
+    "failed": "Échec",
+    "refunded": "Remboursé"
+  },
+  "common": {
+    "currency": "MAD"
+  }
+}

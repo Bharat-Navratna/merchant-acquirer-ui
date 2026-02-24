@@ -1,6 +1,6 @@
 import { PaymentMethod } from './PaymentMethod';
 
-export type TransactionStatus = 'success' | 'failed';
+export type TransactionStatus = 'success' | 'failed' | 'refunded';
 
 export interface Transaction {
   id: string;

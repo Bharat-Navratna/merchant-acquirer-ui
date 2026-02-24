@@ -5,6 +5,7 @@ import { seedTransactions } from '../data/transactions';
 interface TransactionsContextValue {
   transactions: Transaction[];
   addTransaction: (tx: Transaction) => void;
+  refundTransaction: (id: string) => void;
 }
 
 const TransactionsContext = createContext<TransactionsContextValue | undefined>(undefined);
@@ -16,8 +17,14 @@ export const TransactionsProvider: React.FC<{ children: ReactNode }> = ({ childr
     setTransactions(prev => [tx, ...prev]);
   };
 
+  const refundTransaction = (id: string) => {
+    setTransactions(prev =>
+      prev.map(tx => (tx.id === id ? { ...tx, status: 'refunded' as const } : tx)),
+    );
+  };
+
   return (
-    <TransactionsContext.Provider value={{ transactions, addTransaction }}>
+    <TransactionsContext.Provider value={{ transactions, addTransaction, refundTransaction }}>
       {children}
     </TransactionsContext.Provider>
   );

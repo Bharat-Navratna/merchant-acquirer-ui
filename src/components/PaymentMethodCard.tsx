@@ -1,6 +1,8 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { PaymentMethod, PaymentMethodLabels } from '../models/PaymentMethod';
+import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { PaymentMethod, PaymentMethodIcons } from '../models/PaymentMethod';
+import { colors, spacing, radii, shadow, typography } from '../theme';
 
 interface Props {
   method: PaymentMethod;
@@ -9,13 +11,20 @@ interface Props {
 }
 
 export const PaymentMethodCard: React.FC<Props> = ({ method, selected, onPress }) => {
+  const { t } = useTranslation();
+
   return (
     <TouchableOpacity
       style={[styles.card, selected && styles.selected]}
       onPress={onPress}
       activeOpacity={0.7}
     >
-      <Text style={styles.label}>{PaymentMethodLabels[method]}</Text>
+      <View style={[styles.iconWrap, selected && styles.iconWrapSelected]}>
+        <Text style={styles.icon}>{PaymentMethodIcons[method]}</Text>
+      </View>
+      <Text style={[styles.label, selected && styles.labelSelected]}>
+        {t(`payMethod.${method}`)}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -23,20 +32,41 @@ export const PaymentMethodCard: React.FC<Props> = ({ method, selected, onPress }
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    margin: 8,
-    padding: 24,
-    borderWidth: 1,
-    borderColor: '#bbb',
-    borderRadius: 8,
+    margin: spacing.sm,
+    paddingVertical: spacing.xl,
+    paddingHorizontal: spacing.md,
+    backgroundColor: colors.surface,
+    borderWidth: 2,
+    borderColor: colors.border,
+    borderRadius: radii.lg,
     alignItems: 'center',
     justifyContent: 'center',
+    ...shadow,
   },
   selected: {
-    borderColor: '#007aff',
-    backgroundColor: '#e6f0ff',
+    borderColor: colors.accent,
+    backgroundColor: colors.accentLight,
+  },
+  iconWrap: {
+    width: 48,
+    height: 48,
+    borderRadius: radii.md,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.sm,
+  },
+  iconWrapSelected: {
+    backgroundColor: colors.surface,
+  },
+  icon: {
+    fontSize: 24,
   },
   label: {
-    fontSize: 18,
+    ...typography.body,
     fontWeight: '600',
+  },
+  labelSelected: {
+    color: colors.accent,
   },
 });

@@ -1,63 +1,58 @@
-# Merchant Acquirer MVP (Morocco)
+# YQN Pay — Merchant Acquiring MVP
 
-This repository contains a minimal React Native frontend designed as a merchant "acquiring" UI tailored for the Moroccan market. It uses Expo, React Native, and TypeScript.
+A modern React Native merchant-acquiring app targeting the **Moroccan market**. Built with React Native 0.84 (New Architecture), TypeScript, and i18next for full FR / AR / EN localization.
 
-## 🛠 Getting Started
+## Getting Started
 
-1. **Install dependencies**
-   ```sh
-   npm install
-   ```
-2. **Start the development server**
-   ```sh
-   npm start
-   ```
-   (or `expo start` if you are using the Expo CLI)
+```sh
+# Install dependencies
+npm install
 
-3. Open the app in an emulator or on a device using the QR code.
+# Start Metro bundler
+npx react-native start
 
-## 📱 App Flow
+# Run on Android (emulator or device)
+npx react-native run-android
+```
 
-- **Home**: shows the 5 most recent transactions, a link to view the full list, and a button to initiate a new payment. Settings button in the top-right.
-- **Transactions**: full list of transactions with tappable rows.
-- **Transaction Detail**: amount (MAD), status badge, method, reference, date/time.
-- **Payment Flow**:
-  1. Pay Method Select (Carte / Wallet)
-  2. Enter amount using a keypad (validated >0)
-  3. Confirm details with a simulated loading state (800ms)
-  4. Result screen showing success and quick summary
-  5. A successful payment is prepended to the transaction list
-- **Settings**: placeholder language toggle between Français and العربية (no real translation).
+## App Flow (Square-inspired POS)
 
-## 📁 Folder Structure
+1. **Home** — Dashboard with today's sales total, transaction count, recent transactions list, and a prominent "New Payment" CTA.
+2. **Pay Method Select** — 2×2 grid: Card, Wallet, QR Code, Cash.
+3. **Amount Entry** — Custom numeric keypad, MAD-formatted display with 2-decimal limit.
+4. **Confirm** — Summary card + animated processing spinner (simulated 800 ms).
+5. **Result** — Success/failure screen with reference, then reset navigation back to Home.
+6. **Transactions** — Full history list with empty-state message.
+7. **Transaction Detail** — Card layout showing amount, status, method, reference, date. Refund button for successful transactions.
+8. **Settings** — Language picker (Français / العربية / English) with persistence.
+
+## Internationalization (i18n)
+
+- **Supported languages**: French (default), Arabic, English.
+- All UI strings use `react-i18next` with JSON locale files in `src/i18n/locales/`.
+- Language selection is persisted to AsyncStorage.
+- Arabic triggers RTL layout via `I18nManager.forceRTL()` with a restart prompt.
+
+## Folder Structure
 
 ```
 src/
-  components/           # Reusable widgets (buttons, badges, keypad, etc.)
-  context/              # React context for transactions
-  data/                 # Mock seed transactions
-  models/               # TypeScript data models and enums
-  navigation/           # React Navigation stack and types
-  screens/              # All screen components
-  utils/                # Utility functions (e.g. formatMoney)
-
-App.tsx                # Entry point bootstrapping navigation & context
-README.md              # This file
+  components/       # AmountKeypad, PaymentMethodCard, PrimaryButton, StatusBadge, TransactionRow
+  context/          # TransactionsContext (state + refund), LanguageContext (i18n + RTL)
+  data/             # Seed mock transactions
+  i18n/             # i18next setup + locales/ (fr.json, en.json, ar.json)
+  models/           # PaymentMethod (card/wallet/qr/cash), Transaction (with refunded status)
+  navigation/       # AppNavigator + RootStackParamList types
+  screens/          # Home, PayMethodSelect, PayAmount, PayConfirm, PayResult, Transactions, TransactionDetail, Settings
+  utils/            # formatMoney (MAD, fr-MA locale)
+  theme.ts          # Colors, spacing, radii, shadows, typography (Revolut/Monzo-inspired)
+App.tsx             # Entry point — I18n + LanguageProvider + TransactionsProvider + Navigation
 ```
 
-## 💡 Assumptions
+## Key Design Decisions
 
-- **Frontend-only**: all data lives in memory; there is no backend or persistence.
-- **Mock data**: seed transactions are defined in `src/data/transactions.ts`.
-- **Language**: labels are French by default; the language switcher is decorative.
-- **Currency**: all amounts formatted in Moroccan dirham (MAD) using `fr-MA` locale.
-- **Payments**: always succeed in this MVP.
-
-## 📌 Market Notes
-
-- Currency should always be displayed as **MAD**.
-- Default UI copy is in **Français**; Arabic is not implemented but placeholder toggle exists.
-
----
-
-This project aims to provide a clean, minimal, production‑style merchant acquiring interface focused on core functionality with simple navigation and well-structured code.
+- **No backend** — all data is in-memory with mock seed transactions.
+- **Currency** — Moroccan Dirham (MAD), formatted with `fr-MA` locale.
+- **UI** — Revolut/Monzo-inspired clean card-based design with subtle shadows.
+- **Architecture** — React Native 0.84, New Arch enabled, Hermes JS engine.
+- **Payments** — always succeed in this MVP (simulated processing delay).

@@ -1,0 +1,81 @@
+{
+  "appName": "YQN Pay",
+  "home": {
+    "title": "YQN Pay",
+    "todaySales": "Today's Collections",
+    "todayCount": "Transactions",
+    "recentTransactions": "Recent Transactions",
+    "viewAll": "View All",
+    "newPayment": "Charge",
+    "noTransactions": "No transactions yet",
+    "settings": "Settings"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "empty": "No transactions"
+  },
+  "detail": {
+    "title": "Details",
+    "amount": "Amount",
+    "status": "Status",
+    "method": "Method",
+    "reference": "Reference",
+    "dateTime": "Date / Time",
+    "notFound": "Transaction not found",
+    "refund": "Refund",
+    "refundConfirm": "Confirm refund?",
+    "refundMessage": "This will mark the transaction as refunded.",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "payMethod": {
+    "title": "Payment Method",
+    "choose": "Choose method",
+    "continue": "Continue",
+    "card": "Card",
+    "wallet": "Wallet",
+    "qr": "QR Code",
+    "cash": "Cash"
+  },
+  "payAmount": {
+    "title": "Amount to Charge",
+    "next": "Next",
+    "errorAmount": "Enter an amount greater than 0"
+  },
+  "payConfirm": {
+    "title": "Confirm",
+    "amount": "Amount",
+    "method": "Method",
+    "confirm": "Confirm Charge",
+    "processing": "Processing…"
+  },
+  "payResult": {
+    "title": "Receipt",
+    "success": "Payment Accepted",
+    "failed": "Payment Failed",
+    "amount": "Amount",
+    "status": "Status",
+    "method": "Method",
+    "reference": "Ref",
+    "dateTime": "Date / Time",
+    "backHome": "Done"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "french": "Français",
+    "arabic": "العربية",
+    "english": "English",
+    "rtlRestart": "The app needs to restart to apply Arabic (RTL) layout.",
+    "restart": "Restart",
+    "later": "Later"
+  },
+  "status": {
+    "success": "Captured",
+    "failed": "Failed",
+    "refunded": "Refunded"
+  },
+  "common": {
+    "currency": "MAD"
+  }
+}
