@@ -10,7 +10,7 @@ This is a **frontend-only MVP**. There is no backend, no payment gateway integra
 
 Small and mid-size merchants in Morocco need a simple, multilingual tool to accept payments across methods (card, wallet, QR, cash), track daily collections, and manage basic post-transaction operations like refunds. Existing POS solutions are either hardware-locked, monolingual, or lack the clean UX that modern merchants expect.
 
-YQN Pay addresses this by providing a lightweight, mobile-first acquiring interface that speaks the merchant's language: French, Arabic, or English — and works within the Moroccan financial context (MAD currency, local number formatting, RTL layout support).
+YQN Pay addresses this by providing a lightweight, mobile-first acquiring interface that speaks the merchant's language: French, Arabic, or English and works within the Moroccan financial context (MAD currency, local number formatting, RTL layout support).
 
 ## 3. Product Scope (MVP Boundaries)
 
