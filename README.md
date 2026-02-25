@@ -319,3 +319,11 @@ src/
 YQN Pay was built as a product engineering exercise in the merchant acquiring space, specifically tailored to the Moroccan market. The emphasis was on getting the product framing right, using acquiring terminology, supporting the languages merchants actually use, formatting currency correctly for the locale, and building a UI that feels premium enough for a fintech product.
 
 This is not a production system. It is a demonstration of how a frontend engineer thinks about fintech product design: data modeling for payment lifecycles, i18n as a first-class concern rather than an afterthought, and UI that communicates trust and clarity, qualities that matter when merchants are handling money.
+
+## 17. License
+
+Copyright (c) 2026 Bharat Anil Navratna. All rights reserved.
+
+This code is proprietary and confidential. No part of this repository may be copied, reproduced, modified, published, distributed, or used in any form without explicit written permission from the owner. Unauthorized use is strictly prohibited and may result in legal action.
+
+See [LICENSE.txt](LICENSE.txt) for details.
