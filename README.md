@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-YQN Pay is a mobile point-of-sale application designed for merchants in Morocco. It simulates the front-end experience of a merchant acquiring system — allowing a merchant to accept payments, view transaction history, issue refunds, and receive on-screen receipts.
+YQN Pay is a mobile point-of-sale application designed for merchants in Morocco. It simulates the front-end experience of a merchant acquiring system, allowing a merchant to accept payments, view transaction history, issue refunds, and receive on-screen receipts.
 
 This is a **frontend-only MVP**. There is no backend, no payment gateway integration, and no real money movement. All transaction data lives in-memory and resets on app reload. The goal is to demonstrate product thinking, UI/UX design, and mobile engineering quality for the merchant acquiring domain.
 
@@ -10,7 +10,7 @@ This is a **frontend-only MVP**. There is no backend, no payment gateway integra
 
 Small and mid-size merchants in Morocco need a simple, multilingual tool to accept payments across methods (card, wallet, QR, cash), track daily collections, and manage basic post-transaction operations like refunds. Existing POS solutions are either hardware-locked, monolingual, or lack the clean UX that modern merchants expect.
 
-YQN Pay addresses this by providing a lightweight, mobile-first acquiring interface that speaks the merchant's language — French, Arabic, or English — and works within the Moroccan financial context (MAD currency, local number formatting, RTL layout support).
+YQN Pay addresses this by providing a lightweight, mobile-first acquiring interface that speaks the merchant's language: French, Arabic, or English — and works within the Moroccan financial context (MAD currency, local number formatting, RTL layout support).
 
 ## 3. Product Scope (MVP Boundaries)
 
@@ -82,14 +82,14 @@ Home (Dashboard)
 
 ## 6. Key Features
 
-- **Charge flow** with method selection, amount entry via custom keypad, confirmation, and receipt generation
-- **Refund handling** — one-tap refund with confirmation dialog on captured transactions; status transitions from "Captured" to "Refunded"
-- **Dashboard** — reactive today's collections total (filters by date + success status) and full transaction count
-- **Transaction history** — chronological list with payment method icons, amounts, and color-coded status badges
-- **Trilingual i18n** — all UI copy is externalized into FR/AR/EN JSON bundles; zero hardcoded strings in components
-- **RTL support** — Arabic selection triggers `I18nManager.forceRTL()` with a restart prompt
-- **Locale-aware currency** — `Intl.NumberFormat` with `fr-MA`, `ar-MA`, or `en` locale for MAD formatting
-- **Merchant-specific copy** — terminology uses acquiring language throughout: "Encaisser" (FR), "Charge" (EN), "تحصيل" (AR) rather than generic payment terms; statuses use "Captured" rather than "Completed"
+- **Charge flow:** With method selection, amount entry via custom keypad, confirmation, and receipt generation
+- **Refund handling:** One-tap refund with confirmation dialog on captured transactions; status transitions from "Captured" to "Refunded"
+- **Dashboard:** Reactive today's collections total (filters by date + success status) and full transaction count
+- **Transaction history:** Chronological list with payment method icons, amounts, and color-coded status badges
+- **Trilingual i18n:** All UI copy is externalized into FR/AR/EN JSON bundles; zero hardcoded strings in components
+- **RTL support:** Arabic selection triggers `I18nManager.forceRTL()` with a restart prompt
+- **Locale-aware currency:** `Intl.NumberFormat` with `fr-MA`, `ar-MA`, or `en` locale for MAD formatting
+- **Merchant-specific copy:** Terminology uses acquiring language throughout: "Encaisser" (FR), "Charge" (EN), "تحصيل" (AR) rather than generic payment terms; statuses use "Captured" rather than "Completed"
 
 ## 7. Moroccan Market Considerations
 
@@ -99,34 +99,34 @@ Home (Dashboard)
 
 **Terminology:** The app uses merchant acquiring vocabulary rather than consumer payment language. The primary action is "Encaisser" (to collect/charge), not "Payer" (to pay). Transaction statuses use "Capturé/Captured/مقبوض" to reflect acquiring industry conventions.
 
-**Payment methods:** The four methods (Card, Wallet, QR Code, Cash) represent the mix relevant to Moroccan merchants — card terminals, mobile wallets (reflecting growing adoption in Morocco), QR-based payments, and cash which remains dominant in many segments.
+**Payment methods:** The four methods (Card, Wallet, QR Code, Cash) represent the mix relevant to Moroccan merchants: card terminals, mobile wallets (reflecting growing adoption in Morocco), QR-based payments, and cash which remains dominant in many segments.
 
 ## 8. Design System & UI Decisions
 
 The app uses a centralized design system defined in `src/theme.ts`:
 
-- **Color palette**: Dark primary (`#151928`), blue accent (`#1A56DB`), warm background (`#F7F8FA`), semantic colors for success/error/warning with matching light variants for badges
-- **Typography scale**: 7 levels from `h1` (30px) down to `caption` (12px), plus `amountLg` (34px) for financial figures and `label` (12px uppercase with letter-spacing) for field labels
-- **Spacing**: 10-step scale from `xs` (4) to `xxxxl` (40)
-- **Elevation**: Three shadow levels (`shadow`, `shadowMd`, `shadowLg`) with platform-specific iOS shadow / Android elevation
-- **Border radii**: 6-step scale from `sm` (8) to `full` (999)
+- **Color palette:** Dark primary (`#151928`), blue accent (`#1A56DB`), warm background (`#F7F8FA`), semantic colors for success/error/warning with matching light variants for badges
+- **Typography scale:** 7 levels from `h1` (30px) down to `caption` (12px), plus `amountLg` (34px) for financial figures and `label` (12px uppercase with letter-spacing) for field labels
+- **Spacing:** 10-step scale from `xs` (4) to `xxxxl` (40)
+- **Elevation:** Three shadow levels (`shadow`, `shadowMd`, `shadowLg`) with platform-specific iOS shadow / Android elevation
+- **Border radii:** 6-step scale from `sm` (8) to `full` (999)
 
 Design references: Revolut, Monzo, Square POS. Cards use generous padding with `xxl` radii. The payment method grid is a 2×2 layout with circular icon containers and accent checkmark badges on selection. The amount keypad uses near-square keys with the amount displayed prominently above in 42px with the currency label below.
 
 ## 9. Technical Decisions
 
 - **React Native 0.84.0** (bare, not Expo) with **New Architecture** enabled and **Hermes** JS engine
-- **TypeScript** throughout — strict types for navigation params, transaction models, payment methods, and context values
-- **@react-navigation/native-stack v7** — native stack navigator with typed route params via `RootStackParamList`
-- **react-i18next v16** — i18n with JSON resource bundles, integrated via `useTranslation` hook in every screen/component
-- **React Context** for state — `TransactionsContext` (transaction list, add, refund) and `LanguageContext` (language selection, persistence, RTL management)
-- **AsyncStorage** for language persistence only — transactions are intentionally in-memory given MVP scope
-- **No external UI library** — all components (button, keypad, cards, badges, rows) are custom-built with `StyleSheet.create`
-- **Platform-aware styling** — `Platform.select` for shadow/elevation differences between iOS and Android
+- **TypeScript:** throughout : strict types for navigation params, transaction models, payment methods, and context values
+- **@react-navigation/native-stack v7:** : native stack navigator with typed route params via `RootStackParamList`
+- **react-i18next v16:** : i18n with JSON resource bundles, integrated via `useTranslation` hook in every screen/component
+- **React Context** for state : `TransactionsContext` (transaction list, add, refund) and `LanguageContext` (language selection, persistence, RTL management)
+- **AsyncStorage** for language persistence only : transactions are intentionally in-memory given MVP scope
+- **No external UI library** : all components (button, keypad, cards, badges, rows) are custom-built with `StyleSheet.create`
+- **Platform-aware styling** : `Platform.select` for shadow/elevation differences between iOS and Android
 
 ## 10. Tradeoffs & Assumptions
 
-**Frontend-only MVP:** There is no backend. Transaction processing is simulated with a 1.5-second `setTimeout`. All transactions live in React state and are lost on app restart. This is intentional — the goal is to demonstrate product design and mobile engineering, not infrastructure.
+**Frontend-only MVP:** There is no backend. Transaction processing is simulated with a 1.5-second `setTimeout`. All transactions live in React state and are lost on app restart. This is intentional, the goal is to demonstrate product design and mobile engineering, not infrastructure.
 
 **Simulated success:** Every confirmed charge results in a "success" status. There is no failure simulation in the charge flow. Failed transactions exist only in seed data to show how the UI handles them.
 
@@ -140,7 +140,7 @@ Design references: Revolut, Monzo, Square POS. Cards use generous padding with `
 
 ## 11. Cross-Platform: iOS Expansion Path
 
-A common misconception is that React Native lets you "convert" an Android app to iOS. What actually happens is more powerful: **the same TypeScript codebase already IS the iOS app** — it just hasn't been built and run on iOS yet.
+A common misconception is that React Native lets you "convert" an Android app to iOS. What actually happens is more powerful: **the same TypeScript codebase already IS the iOS app**, it just hasn't been built and run on iOS yet.
 
 ### What's shared with zero changes (~95% of the codebase)
 
@@ -177,8 +177,8 @@ React Native eliminates rebuilding the app, but there is platform-specific **bui
 
 ### Platform-specific considerations if polishing for iOS
 
-- **Android patches don't apply:** The `c++_shared` linking patches applied to `react-native-safe-area-context` and `react-native-screens` for Android are not needed on iOS — these libraries link cleanly via CocoaPods.
-- **Font rendering:** iOS uses San Francisco as the system font; Android uses Roboto. Both render the same `fontWeight` and `fontSize` values but may appear slightly different. No code changes needed — just visual QA.
+- **Android patches don't apply:** The `c++_shared` linking patches applied to `react-native-safe-area-context` and `react-native-screens` for Android are not needed on iOS, these libraries link cleanly via CocoaPods.
+- **Font rendering:** iOS uses San Francisco as the system font; Android uses Roboto. Both render the same `fontWeight` and `fontSize` values but may appear slightly different. No code changes needed, just visual QA.
 - **Status bar:** The app already uses `<StatusBar barStyle="dark-content" />` which works on both platforms. iOS-specific status bar behavior (e.g., tap-to-scroll-to-top) comes free with `FlatList`.
 - **Haptics and gestures:** iOS native stack navigation includes swipe-back gestures automatically via `@react-navigation/native-stack`.
 
@@ -191,7 +191,7 @@ For a developer with a Mac and Xcode set up, going from this Android build to a 
 - Backend integration with a real acquiring gateway (e.g., CMI, HPS) for live transaction processing
 - Persistent transaction storage (local DB or remote API)
 - Merchant authentication and profile management
-- Settlement tracking — distinguish captured vs. settled vs. paid-out funds
+- Settlement tracking: distinguish captured vs. settled vs. paid-out funds
 - Partial refund support with amount entry
 - Receipt sharing (PDF generation, SMS, or WhatsApp)
 - Transaction search and date-range filtering
@@ -316,6 +316,6 @@ src/
 
 ## 16. Author's Note
 
-YQN Pay was built as a product engineering exercise in the merchant acquiring space, specifically tailored to the Moroccan market. The emphasis was on getting the product framing right — using acquiring terminology, supporting the languages merchants actually use, formatting currency correctly for the locale, and building a UI that feels premium enough for a fintech product.
+YQN Pay was built as a product engineering exercise in the merchant acquiring space, specifically tailored to the Moroccan market. The emphasis was on getting the product framing right, using acquiring terminology, supporting the languages merchants actually use, formatting currency correctly for the locale, and building a UI that feels premium enough for a fintech product.
 
-This is not a production system. It is a demonstration of how a frontend engineer thinks about fintech product design: data modeling for payment lifecycles, i18n as a first-class concern rather than an afterthought, and UI that communicates trust and clarity — qualities that matter when merchants are handling money.
+This is not a production system. It is a demonstration of how a frontend engineer thinks about fintech product design: data modeling for payment lifecycles, i18n as a first-class concern rather than an afterthought, and UI that communicates trust and clarity, qualities that matter when merchants are handling money.
