@@ -117,7 +117,7 @@ Design references: Revolut, Monzo, Square POS. Cards use generous padding with `
 
 - **React Native 0.84.0** (bare, not Expo) with **New Architecture** enabled and **Hermes** JS engine
 - **TypeScript:** throughout : strict types for navigation params, transaction models, payment methods, and context values
-- **@react-navigation/native-stack v7:** : native stack navigator with typed route params via `RootStackParamList`
+- **@react-navigation/native-stack v7:** native stack navigator with typed route params via `RootStackParamList`
 - **react-i18next v16:** : i18n with JSON resource bundles, integrated via `useTranslation` hook in every screen/component
 - **React Context** for state : `TransactionsContext` (transaction list, add, refund) and `LanguageContext` (language selection, persistence, RTL management)
 - **AsyncStorage** for language persistence only : transactions are intentionally in-memory given MVP scope
