@@ -8,7 +8,7 @@ import { formatMoney } from '../utils/formatMoney';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { Transaction } from '../models/Transaction';
 import { useTransactions } from '../context/TransactionsContext';
-import { colors, spacing, radii, shadow, typography } from '../theme';
+import { colors, spacing, radii, shadowMd, typography } from '../theme';
 
 type ConfirmRouteProp = RouteProp<RootStackParamList, 'PayConfirm'>;
 type NavProp = NativeStackNavigationProp<RootStackParamList, 'PayConfirm'>;
@@ -66,12 +66,13 @@ const PayConfirmScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: spacing.lg, backgroundColor: colors.background },
+  container: { flex: 1, padding: spacing.xl, backgroundColor: colors.background },
   card: {
     backgroundColor: colors.surface,
-    padding: spacing.xxl,
-    borderRadius: radii.lg,
-    ...shadow,
+    paddingVertical: spacing.xxxl,
+    paddingHorizontal: spacing.xxl,
+    borderRadius: radii.xxl,
+    ...shadowMd,
     marginBottom: spacing.xxl,
   },
   label: {
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xs,
   },
   amount: {
-    ...typography.h1,
+    ...typography.amountLg,
     color: colors.accent,
   },
   value: {

@@ -26,6 +26,7 @@ export const AppNavigator: React.FC = () => {
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.textPrimary,
+          headerTitleStyle: { fontWeight: '600', fontSize: 17 },
           headerShadowVisible: false,
           contentStyle: { backgroundColor: colors.background },
         }}>

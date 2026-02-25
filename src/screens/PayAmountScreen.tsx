@@ -39,9 +39,9 @@ const PayAmountScreen: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: spacing.lg, alignItems: 'center', backgroundColor: colors.background },
-  error: { color: colors.error, marginTop: spacing.sm, fontSize: 14 },
-  button: { width: '100%', marginTop: spacing.lg },
+  container: { flex: 1, padding: spacing.xl, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.background },
+  error: { color: colors.error, marginTop: spacing.md, fontSize: 14 },
+  button: { width: '100%', marginTop: spacing.xxs },
 });
 
 export default PayAmountScreen;

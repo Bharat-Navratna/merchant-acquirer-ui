@@ -7,7 +7,7 @@ import { useTransactions } from '../context/TransactionsContext';
 import { formatMoney } from '../utils/formatMoney';
 import { StatusBadge } from '../components/StatusBadge';
 import { PrimaryButton } from '../components/PrimaryButton';
-import { colors, spacing, radii, shadow, typography } from '../theme';
+import { colors, spacing, radii, shadowMd, typography } from '../theme';
 
 type DetailRouteProp = RouteProp<RootStackParamList, 'TransactionDetail'>;
 
@@ -74,7 +74,7 @@ const TransactionDetailScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: spacing.lg,
+    padding: spacing.xl,
     backgroundColor: colors.background,
   },
   notFound: {
@@ -84,17 +84,18 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.surface,
-    padding: spacing.xxl,
-    borderRadius: radii.lg,
-    ...shadow,
+    paddingVertical: spacing.xxxl,
+    paddingHorizontal: spacing.xxl,
+    borderRadius: radii.xxl,
+    ...shadowMd,
   },
   label: {
     ...typography.label,
-    marginTop: spacing.lg,
-    marginBottom: spacing.xs,
+    marginTop: spacing.xl,
+    marginBottom: spacing.sm,
   },
   amount: {
-    ...typography.h1,
+    ...typography.amountLg,
     color: colors.accent,
   },
   value: {

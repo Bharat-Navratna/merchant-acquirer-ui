@@ -42,21 +42,22 @@ const SettingsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: spacing.lg,
+    padding: spacing.xl,
     backgroundColor: colors.background,
   },
   sectionTitle: {
     ...typography.label,
-    marginBottom: spacing.md,
+    marginBottom: spacing.lg,
   },
   option: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.surface,
-    padding: spacing.lg,
-    borderRadius: radii.md,
-    marginBottom: spacing.sm,
+    paddingVertical: spacing.xxl,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radii.xl,
+    marginBottom: spacing.md,
     borderWidth: 2,
     borderColor: 'transparent',
     ...shadow,

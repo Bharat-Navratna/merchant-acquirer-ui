@@ -27,13 +27,14 @@ export const StatusBadge: React.FC<Props> = ({ status }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
+    paddingHorizontal: 14,
+    paddingVertical: 5,
     borderRadius: radii.full,
     alignSelf: 'flex-start',
   },
   text: {
     fontSize: 12,
     fontWeight: '600',
+    letterSpacing: 0.2,
   },
 });

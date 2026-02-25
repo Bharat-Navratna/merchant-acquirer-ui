@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { formatMoney } from '../utils/formatMoney';
-import { colors, spacing, radii, typography } from '../theme';
+import { colors, spacing, radii, shadow } from '../theme';
 
 interface Props {
   value: string;
@@ -27,10 +27,14 @@ export const AmountKeypad: React.FC<Props> = ({ value, onChange }) => {
   };
 
   const displayAmount = value ? formatMoney(parseFloat(value) || 0) : formatMoney(0);
+  const numericPart = displayAmount.replace(/\s*MAD$/, '');
 
   return (
     <View style={styles.container}>
-      <Text style={styles.display}>{displayAmount}</Text>
+      <View style={styles.displayWrap}>
+        <Text style={styles.display}>{numericPart}</Text>
+        <Text style={styles.currency}>MAD</Text>
+      </View>
       <View style={styles.grid}>
         {buttons.map(b => (
           <TouchableOpacity
@@ -52,33 +56,51 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+  displayWrap: {
+    alignItems: 'center',
+    marginTop: spacing.xxl,
+    marginBottom: spacing.xxxl,
+  },
   display: {
-    ...typography.h1,
-    fontSize: 36,
-    marginVertical: spacing.xxl,
+    fontSize: 60,
+    fontWeight: '700',
+    color: colors.accent,
+    letterSpacing: -1,
+  },
+  currency: {
+    fontSize: 25,
+    fontWeight: '600',
+    color: colors.textTertiary,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+    marginTop: spacing.xs,
   },
   grid: {
     width: '100%',
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    paddingHorizontal: spacing.sm,
   },
   key: {
-    width: '30%',
-    margin: '1.5%',
-    aspectRatio: 1.6,
+    width: '29%',
+    margin: '2%',
+    aspectRatio: 1.1,
     backgroundColor: colors.surface,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.md,
+    borderRadius: radii.xl,
+    ...shadow,
   },
   keyText: {
-    fontSize: 24,
-    fontWeight: '500',
+    fontSize: 28,
+    fontWeight: '600',
     color: colors.textPrimary,
   },
   deleteKey: {
     backgroundColor: colors.errorLight,
+    elevation: 0,
+    shadowOpacity: 0,
   },
   deleteKeyText: {
     color: colors.error,

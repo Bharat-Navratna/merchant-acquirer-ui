@@ -6,7 +6,7 @@ import { RootStackParamList } from '../navigation/types';
 import { formatMoney } from '../utils/formatMoney';
 import { StatusBadge } from '../components/StatusBadge';
 import { PrimaryButton } from '../components/PrimaryButton';
-import { colors, spacing, radii, shadow, typography } from '../theme';
+import { colors, spacing, radii, shadowMd, typography } from '../theme';
 
 type ResultRouteProp = RouteProp<RootStackParamList, 'PayResult'>;
 
@@ -60,25 +60,25 @@ const PayResultScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: spacing.lg,
+    padding: spacing.xl,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.background,
   },
   iconCircle: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     backgroundColor: colors.successLight,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: spacing.xl,
+    marginBottom: spacing.xxl,
   },
   iconCircleFailed: {
     backgroundColor: colors.errorLight,
   },
   icon: {
-    fontSize: 36,
+    fontSize: 40,
     color: colors.success,
   },
   iconFailed: {
@@ -91,19 +91,20 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.surface,
-    padding: spacing.xxl,
-    borderRadius: radii.lg,
+    paddingVertical: spacing.xxxl,
+    paddingHorizontal: spacing.xxl,
+    borderRadius: radii.xxl,
     width: '100%',
-    ...shadow,
+    ...shadowMd,
     marginBottom: spacing.xxl,
   },
   receiptLabel: {
     ...typography.label,
-    marginTop: spacing.md,
-    marginBottom: spacing.xs,
+    marginTop: spacing.lg,
+    marginBottom: spacing.sm,
   },
   amount: {
-    ...typography.h1,
+    ...typography.amountLg,
     color: colors.accent,
   },
   receiptValue: {

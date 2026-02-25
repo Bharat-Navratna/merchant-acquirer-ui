@@ -16,7 +16,7 @@ export const TransactionRow: React.FC<Props> = ({ transaction, onPress }) => {
   const { t } = useTranslation();
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.65}>
       <View style={styles.container}>
         <View style={styles.iconContainer}>
           <Text style={styles.icon}>{PaymentMethodIcons[transaction.method]}</Text>
@@ -36,19 +36,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.surface,
-    padding: spacing.lg,
-    borderRadius: radii.md,
-    marginBottom: spacing.sm,
+    paddingVertical: spacing.xl,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radii.xl,
+    marginBottom: spacing.md,
     ...shadow,
   },
   iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: radii.sm,
-    backgroundColor: colors.background,
+    width: 48,
+    height: 48,
+    borderRadius: radii.lg,
+    backgroundColor: colors.borderLight,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: spacing.md,
+    marginRight: spacing.lg,
   },
   icon: {
     fontSize: 20,
@@ -57,11 +58,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   amount: {
-    ...typography.body,
-    fontWeight: '600',
+    fontSize: 18,
+    fontWeight: '700',
+    color: colors.textPrimary,
+    letterSpacing: -0.2,
   },
   method: {
     ...typography.caption,
-    marginTop: 2,
+    marginTop: 4,
   },
 });

@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    paddingHorizontal: spacing.lg,
+    paddingHorizontal: spacing.xl,
   },
   header: {
     flexDirection: 'row',
@@ -102,35 +102,39 @@ const styles = StyleSheet.create({
   },
   cardsRow: {
     flexDirection: 'row',
-    marginBottom: spacing.lg,
+    marginBottom: spacing.xl,
   },
   card: {
     flex: 1,
-    padding: spacing.lg,
-    borderRadius: radii.lg,
+    paddingVertical: spacing.xxl,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radii.xxl,
     ...shadowMd,
   },
   salesCard: {
     backgroundColor: colors.primary,
-    marginRight: spacing.sm,
+    marginRight: spacing.md,
   },
   countCard: {
     backgroundColor: colors.accent,
-    marginLeft: spacing.sm,
+    marginLeft: spacing.md,
   },
   cardLabel: {
-    fontSize: 13,
-    color: 'rgba(255,255,255,0.7)',
+    fontSize: 12,
+    color: 'rgba(255,255,255,0.6)',
     fontWeight: '500',
-    marginBottom: spacing.xs,
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+    marginBottom: spacing.sm,
   },
   cardValue: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: '700',
     color: '#fff',
+    letterSpacing: -0.3,
   },
   cta: {
-    marginBottom: spacing.xl,
+    marginBottom: spacing.xxl,
   },
   sectionHeader: {
     flexDirection: 'row',

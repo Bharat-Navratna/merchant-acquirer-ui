@@ -19,6 +19,7 @@ const PayMethodSelectScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('payMethod.choose')}</Text>
+      <Text style={styles.subtitle}>{t('payMethod.title')}</Text>
       <View style={styles.grid}>
         {PAYMENT_METHODS.map(m => (
           <PaymentMethodCard
@@ -43,20 +44,27 @@ const PayMethodSelectScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: spacing.lg,
+    paddingHorizontal: spacing.xl,
+    paddingTop: spacing.xxl,
+    paddingBottom: spacing.xl,
     backgroundColor: colors.background,
   },
   title: {
     ...typography.h2,
-    marginBottom: spacing.lg,
+    marginBottom: spacing.xs,
+  },
+  subtitle: {
+    ...typography.bodySmall,
+    marginBottom: spacing.xxl,
   },
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
   footer: {
     marginTop: 'auto',
-    paddingTop: spacing.lg,
+    paddingTop: spacing.xxl,
   },
 });
 
